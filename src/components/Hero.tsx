@@ -1,20 +1,49 @@
-import React from 'react';
-import { PhoneCall, ArrowDown, Star, Flame, Sparkles, UtensilsCrossed } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { PhoneCall, Star, Flame, UtensilsCrossed, Instagram, ArrowUpRight } from 'lucide-react';
+import { motion } from 'motion/react';
 import { COMPANY_INFO } from '../data/menuData';
+import { photoStore } from '../utils/photoStore';
 
 interface HeroProps {
   onOpenOrder: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
+  const [heroImage, setHeroImage] = useState(() =>
+    photoStore.getPhoto(
+      'xbacon-farto',
+      'https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=85&w=1200&auto=format&fit=crop'
+    )
+  );
+
+  useEffect(() => {
+    const unsub = photoStore.subscribe(() => {
+      setHeroImage(
+        photoStore.getPhoto(
+          'xbacon-farto',
+          'https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=85&w=1200&auto=format&fit=crop'
+        )
+      );
+    });
+    return unsub;
+  }, []);
+
   return (
     <section
       id="inicio"
       className="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 flex items-center overflow-hidden bg-[#0b0c0e] bg-noise"
     >
       {/* Background Ambience / Warm Ember Radial */}
-      <div className="absolute top-1/4 right-0 w-[550px] h-[550px] bg-[#e03a14]/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#f59e0b]/5 rounded-full blur-[120px] pointer-events-none" />
+      <motion.div 
+        animate={{ scale: [1, 1.15, 1], opacity: [0.08, 0.15, 0.08] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 right-0 w-[550px] h-[550px] bg-[#e03a14] rounded-full blur-[140px] pointer-events-none" 
+      />
+      <motion.div 
+        animate={{ scale: [1, 1.2, 1], opacity: [0.04, 0.09, 0.04] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#f59e0b] rounded-full blur-[120px] pointer-events-none" 
+      />
 
       {/* Decorative vertical editorial line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-28 bg-gradient-to-b from-[#e03a14]/30 to-transparent pointer-events-none" />
@@ -26,57 +55,99 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
           <div className="lg:col-span-7 space-y-7 text-left">
             
             {/* Top Local Badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#181a1f] border border-[#2d313b] text-xs font-semibold text-[#f4efe6]">
-              <span className="w-2 h-2 rounded-full bg-[#e03a14] animate-ping" />
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#181a1f] border border-[#2d313b] text-xs font-semibold text-[#f4efe6] shadow-sm"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e03a14] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#e03a14]" />
+              </span>
               <span className="text-[#ea580c] uppercase tracking-widest text-[11px] font-bold">
                 Três Coroas · RS
               </span>
               <span className="text-[#645e54]">|</span>
               <span className="text-[#a39e93]">Lanches & Porções Artesanais</span>
-            </div>
+            </motion.div>
 
-            {/* Powerful Display Headline */}
-            <div className="space-y-1">
+            {/* Powerful Display Headline with animated entrance */}
+            <motion.div 
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+              className="space-y-1"
+            >
               <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-[82px] leading-[0.94] tracking-tight text-white uppercase break-words">
                 DEU FOME. <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ea580c] via-[#f97316] to-[#f59e0b]">
                   A GENTE RESOLVE.
                 </span>
               </h1>
-            </div>
+            </motion.div>
 
             {/* Direct, Honest Brand Statement */}
-            <p className="font-body text-sm sm:text-base lg:text-lg text-[#c7c1b5] max-w-xl leading-relaxed">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="font-body text-sm sm:text-base lg:text-lg text-[#c7c1b5] max-w-xl leading-relaxed"
+            >
               Lanche de verdade, daquele que chega na mesa e chama atenção. Na <strong className="text-white font-semibold">Max’s Lanches</strong>, é pão fresco, chapa quente, porção generosa e <span className="text-[#f59e0b] font-medium">zero miséria</span>.
-            </p>
+            </motion.p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full">
+            {/* Action Buttons with spring hover effects */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full"
+            >
               {/* WhatsApp Direct Order Button */}
-              <a
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
                 href={COMPANY_INFO.whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
                 id="hero-cta-whatsapp"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white font-heading font-extrabold text-sm sm:text-base tracking-wider uppercase shadow-xl shadow-[#e03a14]/30 hover:shadow-[#e03a14]/40 transition-all active:scale-[0.98] min-h-[48px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white font-heading font-extrabold text-sm sm:text-base tracking-wider uppercase shadow-xl shadow-[#e03a14]/30 hover:shadow-[#e03a14]/50 transition-all min-h-[48px]"
               >
                 <PhoneCall className="w-5 h-5 flex-shrink-0" />
                 PEDIR AGORA
-              </a>
+              </motion.a>
 
               {/* View Menu Button */}
-              <a
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
                 href="#cardapio"
                 id="hero-cta-cardapio"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-[#181a1f] hover:bg-[#20242c] text-[#f4efe6] border border-[#2b303c] font-heading font-bold text-sm sm:text-base tracking-wide transition-colors min-h-[48px]"
               >
                 <UtensilsCrossed className="w-4 h-4 text-[#ea580c] flex-shrink-0" />
                 VER CARDÁPIO
-              </a>
-            </div>
+              </motion.a>
+
+              {/* Real Photos Anchor Button */}
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                href="#fotos-reais"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-4 rounded-xl bg-[#13151b] hover:bg-[#1a1d25] text-[#b8b1a3] hover:text-white border border-[#242833] font-heading font-bold text-xs sm:text-sm tracking-wide transition-colors min-h-[48px]"
+              >
+                <span>FOTOS REAIS</span>
+              </motion.a>
+            </motion.div>
 
             {/* Social Trust Indicator: 4.9 on Google */}
-            <div className="pt-3 border-t border-[#1f222a] flex flex-wrap items-center gap-4 text-xs text-[#a39e93]">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="pt-3 border-t border-[#1f222a] flex flex-wrap items-center gap-4 text-xs text-[#a39e93]"
+            >
               <div className="flex items-center gap-1.5 text-amber-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
@@ -92,23 +163,32 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
                 <span className="w-1 h-1 rounded-full bg-[#46413a]" />
                 <span>R. dos Caigangues, 515</span>
               </div>
-            </div>
+            </motion.div>
 
           </div>
 
-          {/* Right Column: Hero Visual - Food Photography Composition */}
+          {/* Right Column: Hero Visual with Gentle Float and Glow */}
           <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-[480px] lg:max-w-none">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="relative mx-auto max-w-[480px] lg:max-w-none"
+            >
               
-              {/* Outer Decorative Frame & Shadow */}
-              <div className="relative rounded-3xl overflow-hidden border border-[#2d313c] bg-[#14161b] shadow-2xl shadow-black/80 group">
+              {/* Floating ambient motion on the main card */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative rounded-3xl overflow-hidden border border-[#2d313c] bg-[#14161b] shadow-2xl shadow-black/80 group"
+              >
                 
                 {/* Image Overlay Vignette */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c0e] via-transparent to-black/30 z-10 pointer-events-none" />
 
-                {/* Hero Food Photography (Artisanal Gaucho Xis / Burger with melting cheese) */}
+                {/* Hero Food Photography */}
                 <img
-                  src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=85&w=1200&auto=format&fit=crop"
+                  src={heroImage}
                   alt="Xis e lanche artesanal Max’s Lanches com queijo derretendo e carne suculenta"
                   referrerPolicy="no-referrer"
                   className="w-full h-[320px] xs:h-[380px] sm:h-[440px] lg:h-[520px] object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -117,23 +197,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
 
                 {/* Badge Overlay on Image: Authentic House Favorite */}
                 <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-black/75 backdrop-blur-md border border-white/10 text-[11px] sm:text-xs font-heading font-bold text-white uppercase tracking-wider">
+                  <motion.span 
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-[#e03a14]/40 text-[11px] sm:text-xs font-heading font-bold text-white uppercase tracking-wider shadow-lg"
+                  >
                     <Flame className="w-3.5 h-3.5 text-[#e03a14]" />
                     Chapa Quente
-                  </span>
+                  </motion.span>
                 </div>
 
                 {/* Bottom Overlay Label */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 z-20 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#121316]/90 backdrop-blur-md border border-[#2b303c] flex items-center justify-between">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 z-20 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#121316]/95 backdrop-blur-md border border-[#2b303c] flex items-center justify-between">
                   <div className="min-w-0 pr-2">
                     <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#ea580c] block">
-                      Favorito da Galera
+                      Foto Real da Casa
                     </span>
                     <h3 className="font-heading font-bold text-sm sm:text-base text-white truncate">
-                      X-Tudo & X-Bacon
+                      X-Bacon Especial
                     </h3>
                     <p className="text-[11px] sm:text-xs text-[#a39e93] truncate">
-                      Queijo derretido, bacon farto e bife suculento
+                      Bacon crocante em cubos, ovo caipira e queijo derretido
                     </p>
                   </div>
                   <div className="text-right flex-shrink-0">
@@ -144,37 +228,50 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
                   </div>
                 </div>
 
-              </div>
+              </motion.div>
 
-              {/* Floating Accent Badge: Generosidade Gaúcha */}
-              <div className="hidden md:flex absolute -bottom-4 left-4 z-30 p-3 rounded-2xl bg-[#16181e] border border-[#2b303c] shadow-xl items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#f59e0b]/15 border border-[#f59e0b]/30 flex items-center justify-center text-[#f59e0b]">
-                  <Sparkles className="w-4 h-4" />
+              {/* Instagram Direct Link on the First Image (Awwwards Gastropub Style) */}
+              <motion.a 
+                href={COMPANY_INFO.instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="hidden sm:flex absolute -bottom-4 left-4 z-30 px-3.5 py-2.5 rounded-2xl bg-[#14161c]/95 backdrop-blur-md border border-white/15 shadow-2xl items-center gap-3 text-white group hover:border-[#ea580c]/60 transition-all cursor-pointer"
+                id="hero-instagram-badge"
+              >
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#f59e0b] via-[#ea580c] to-[#e11d48] flex items-center justify-center text-white shadow-md flex-shrink-0">
+                  <Instagram className="w-4 h-4" />
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold text-white font-heading uppercase tracking-wide">
-                    Porção Generosa
-                  </h4>
+                <div className="text-left">
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs font-bold text-white font-heading tracking-wide">@maxslanches</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#ea580c] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </div>
                   <p className="text-[10px] text-[#a39e93]">
-                    Sem miséria no prato
+                    Siga no Instagram · Fotos reais
                   </p>
                 </div>
-              </div>
+              </motion.a>
 
               {/* Floating Quick Order Pill */}
-              <div className="hidden md:flex absolute -top-3 right-4 z-30 px-3 py-1.5 rounded-xl bg-[#22c55e]/15 border border-[#22c55e]/30 backdrop-blur-md text-[#22c55e] text-xs font-semibold items-center gap-1.5">
+              <motion.div 
+                animate={{ scale: [1, 1.04, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="hidden md:flex absolute -top-3 right-4 z-30 px-3 py-1.5 rounded-xl bg-[#22c55e]/15 border border-[#22c55e]/30 backdrop-blur-md text-[#22c55e] text-xs font-semibold items-center gap-1.5"
+              >
                 <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-ping" />
                 <span>Delivery & Retirada</span>
-              </div>
+              </motion.div>
 
-            </div>
+            </motion.div>
           </div>
 
         </div>
       </div>
 
-      {/* Subtle bottom ticker for immediate appetite stimulation */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-[#1a1c22] bg-[#0e0f13]/80 backdrop-blur-sm py-2.5 overflow-hidden w-full max-w-full">
+      {/* Animated bottom ticker */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-[#1a1c22] bg-[#0e0f13]/85 backdrop-blur-sm py-2.5 overflow-hidden w-full max-w-full">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold text-[#868074] whitespace-nowrap overflow-hidden">
           <span>✦ PÃO FRESQUINHO</span>
           <span className="hidden xs:inline">✦ QUEIJO DERRETENDO</span>

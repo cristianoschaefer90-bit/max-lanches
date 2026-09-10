@@ -1,17 +1,28 @@
 import React from 'react';
 import { Star, Quote, ShieldCheck } from 'lucide-react';
+import { motion } from 'motion/react';
 import { REAL_REVIEWS, COMPANY_INFO } from '../data/menuData';
 
 export const SocialProof: React.FC = () => {
   return (
     <section id="avaliacoes" className="py-20 lg:py-28 relative bg-[#0b0c0e] border-t border-[#1a1c22] overflow-hidden">
       {/* Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#e03a14]/5 rounded-full blur-[160px] pointer-events-none" />
+      <motion.div 
+        animate={{ scale: [1, 1.15, 1], opacity: [0.03, 0.07, 0.03] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#e03a14] rounded-full blur-[160px] pointer-events-none" 
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
         {/* Header with Google Rating Badge */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#1f222a]">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#1f222a]"
+        >
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#ea580c]">
               <ShieldCheck className="w-4 h-4" />
@@ -23,7 +34,10 @@ export const SocialProof: React.FC = () => {
           </div>
 
           {/* Rating Badge */}
-          <div className="p-4 rounded-2xl bg-[#14161c] border border-[#252832] flex items-center gap-4">
+          <motion.div 
+            whileHover={{ scale: 1.03 }}
+            className="p-4 rounded-2xl bg-[#14161c] border border-[#252832] flex items-center gap-4 shadow-lg"
+          >
             <div className="text-center pr-3 border-r border-[#252832]">
               <span className="font-heading font-black text-3xl text-white block">
                 {COMPANY_INFO.rating}
@@ -42,17 +56,22 @@ export const SocialProof: React.FC = () => {
                 {COMPANY_INFO.reviewsCount} clientes avaliaram em Três Coroas
               </span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Real Reviews Cards (strictly using only provided authentic reviews) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {REAL_REVIEWS.map((review, index) => (
-            <div
+            <motion.div
               key={review.id}
-              className={`rounded-2xl p-6 sm:p-8 flex flex-col justify-between border transition-all ${
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -6 }}
+              className={`rounded-2xl p-6 sm:p-8 flex flex-col justify-between border transition-all duration-300 ${
                 index === 0
-                  ? 'bg-gradient-to-b from-[#181a22] to-[#121318] border-[#313644] md:scale-[1.03] shadow-xl'
+                  ? 'bg-gradient-to-b from-[#181a22] to-[#121318] border-[#ea580c]/30 shadow-xl'
                   : 'bg-[#13151b] border-[#22252e] hover:border-[#2f333f]'
               }`}
             >
@@ -82,7 +101,7 @@ export const SocialProof: React.FC = () => {
                 </div>
                 <span>{review.timeAgo}</span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

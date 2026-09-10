@@ -53,6 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
     { label: 'Início', href: '#inicio' },
     { label: 'Cardápio', href: '#cardapio' },
     { label: 'Destaques', href: '#destaques' },
+    { label: 'Instagram', href: '#instagram' },
     { label: 'Sobre a Max’s', href: '#sobre' },
     { label: 'Avaliações', href: '#avaliacoes' },
     { label: 'Localização', href: '#localizacao' },
@@ -68,9 +69,8 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
         {/* Brand Identity */}
-        <a href="#inicio" className="group flex items-center gap-2 focus:outline-none min-w-0">
-          <BrandLogo size="sm" className="xs:hidden" />
-          <BrandLogo size="md" className="hidden xs:inline-flex" />
+        <a href="#inicio" className="group flex items-center gap-2 focus:outline-none min-w-0" id="navbar-brand-logo">
+          <BrandLogo size="md" />
         </a>
 
         {/* Desktop Navigation Links */}

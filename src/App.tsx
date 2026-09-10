@@ -3,7 +3,9 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutConcept } from './components/AboutConcept';
 import { FeaturedDishes } from './components/FeaturedDishes';
+import { RealPhotosGallery } from './components/RealPhotosGallery';
 import { MenuSection } from './components/MenuSection';
+import { OrderSection } from './components/OrderSection';
 import { SocialProof } from './components/SocialProof';
 import { InstagramFeed } from './components/InstagramFeed';
 import { LocationSection } from './components/LocationSection';
@@ -117,9 +119,20 @@ export default function App() {
           onSelectItem={(item) => handleAddToCart(item)}
         />
 
+        {/* 3.1 Fotos Reais da Chapa da Max's */}
+        <RealPhotosGallery
+          onSelectItem={(item) => handleAddToCart(item)}
+        />
+
         {/* 4. Cardápio Completo Interativo com Adicionais */}
         <MenuSection
           onAddToCart={handleAddToCart}
+        />
+
+        {/* 4.1 Bloco Exclusivo para Fazer Pedidos */}
+        <OrderSection
+          onOpenCart={() => setIsOrderDrawerOpen(true)}
+          cartCount={totalCartCount}
         />
 
         {/* 5. Prova Social Real (Google Reviews) */}

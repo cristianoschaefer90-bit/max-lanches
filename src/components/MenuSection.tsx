@@ -18,19 +18,23 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart }) => {
   const [itemNotes, setItemNotes] = useState<string>('');
 
   const categories = [
-    { id: 'todos', label: 'Todos os Itens' },
-    { id: 'xis', label: 'Xis-Lanches' },
-    { id: 'destaque', label: 'Destaque da Casa' },
-    { id: 'outros', label: 'Outros Lanches' },
+    { id: 'todos', label: 'Todos' },
+    { id: 'xis', label: 'Xis & Lanches' },
     { id: 'porcoes', label: 'Porções' },
     { id: 'bebidas', label: 'Bebidas' },
-    { id: 'adicionais', label: 'Adicionais na Chapa' },
+    { id: 'adicionais', label: 'Adicionais' },
   ];
 
   const filteredItems = useMemo(() => {
     return MENU_ITEMS.filter((item) => {
-      const matchesCategory =
-        activeCategory === 'todos' ? true : item.category === activeCategory;
+      let matchesCategory = false;
+      if (activeCategory === 'todos') {
+        matchesCategory = true;
+      } else if (activeCategory === 'xis') {
+        matchesCategory = item.category === 'xis' || item.category === 'destaque' || item.category === 'outros';
+      } else {
+        matchesCategory = item.category === activeCategory;
+      }
       const matchesSearch =
         item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||

@@ -18,6 +18,7 @@ export const COMPANY_INFO = {
   facebook: "MaxS Lanches",
   facebookUrl: "https://www.facebook.com/profile.php?id=maxslanches",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=R.+dos+Caigangues,+515+-+Sander,+Tr%C3%AAs+Coroas+-+RS,+95660-000",
+  googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=R.+dos+Caigangues,+515+-+Sander,+Tr%C3%AAs+Coroas+-+RS,+95660-000",
   rating: 4.9,
   reviewsCount: 40,
   priceRange: "R$ 20–40 por pessoa",
