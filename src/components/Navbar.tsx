@@ -51,10 +51,10 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
 
   const navLinks = [
     { label: 'Início', href: '#inicio' },
+    { label: 'Sobre', href: '#sobre' },
     { label: 'Cardápio', href: '#cardapio' },
-    { label: 'Destaques', href: '#destaques' },
+    { label: 'Fazer Pedido', href: '#fazer-pedido' },
     { label: 'Instagram', href: '#instagram' },
-    { label: 'Sobre a Max’s', href: '#sobre' },
     { label: 'Avaliações', href: '#avaliacoes' },
     { label: 'Localização', href: '#localizacao' },
   ];

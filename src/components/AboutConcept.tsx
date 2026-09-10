@@ -1,29 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Flame, CheckCircle2, ArrowRight, Instagram, ArrowUpRight } from 'lucide-react';
+import React from 'react';
+import { Flame, CheckCircle2, ArrowRight, Star, Heart, Award, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 import { COMPANY_INFO } from '../data/menuData';
-import { photoStore } from '../utils/photoStore';
 
 export const AboutConcept: React.FC = () => {
-  const [, setTick] = useState(0);
-
-  useEffect(() => {
-    const unsub = photoStore.subscribe(() => setTick((t) => t + 1));
-    return unsub;
-  }, []);
-
-  const xisImg = photoStore.getPhoto(
-    'xis-prensado-recheado',
-    'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=85&w=900&auto=format&fit=crop'
-  );
-
-  const porcaoImg = photoStore.getPhoto(
-    'batata-frita-artesanal',
-    'https://images.unsplash.com/photo-1576107232684-1279f3908594?q=85&w=800&auto=format&fit=crop'
-  );
-
   return (
-    <section id="sobre" className="py-20 lg:py-28 relative bg-[#0d0e12] overflow-hidden border-t border-[#1a1d24]">
+    <section id="sobre" className="py-20 lg:py-28 relative bg-[#0c0d11] overflow-hidden border-t border-[#1a1d24]">
       {/* Subtle background glow */}
       <motion.div 
         animate={{ scale: [1, 1.1, 1], opacity: [0.04, 0.08, 0.04] }}
@@ -36,89 +18,73 @@ export const AboutConcept: React.FC = () => {
         {/* Asymmetric Editorial Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Visual Collage with asymmetric images */}
+          {/* Left Column: Graphic Editorial Brand Card (Zero Food Photos) */}
           <div className="lg:col-span-6 relative">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="relative"
+              className="relative rounded-3xl overflow-hidden border border-[#262a34] bg-[#12141a] p-8 sm:p-10 shadow-2xl space-y-6"
             >
               
-              {/* Primary Large Image: Xis sendo prensado e preparado */}
-              <div className="relative rounded-3xl overflow-hidden border border-[#272b35] bg-[#14161b] shadow-2xl aspect-[4/3] group">
-                <img
-                  src={xisImg}
-                  alt="Lanche artesanal caprichado na chapa quente da Max’s Lanches"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-                
-                <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-3">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#ea580c] block">
-                      Direto da Chapa
-                    </span>
-                    <p className="font-heading font-bold text-base sm:text-lg text-white">
-                      Pão prensado no capricho com queijo derretido
-                    </p>
+              {/* Brand philosophy badge */}
+              <div className="flex items-center justify-between gap-2 border-b border-[#1f232d] pb-5">
+                <div className="flex items-center gap-2">
+                  <div className="w-9 h-9 rounded-xl bg-[#e03a14]/15 border border-[#e03a14]/30 flex items-center justify-center text-[#ea580c]">
+                    <Flame className="w-5 h-5" />
                   </div>
-                  <a
-                    href={COMPANY_INFO.instagramUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 backdrop-blur-md border border-white/20 text-white text-xs font-semibold hover:border-[#ea580c] transition-all"
-                  >
-                    <Instagram className="w-3.5 h-3.5 text-[#ea580c]" />
-                    <span className="hidden xs:inline">@maxslanches</span>
-                    <ArrowUpRight className="w-3 h-3 text-[#a39e93]" />
-                  </a>
+                  <div>
+                    <span className="text-[11px] uppercase tracking-wider font-bold text-[#ea580c] block">
+                      Filosofia Max’s
+                    </span>
+                    <h3 className="font-heading font-black text-lg text-white">
+                      Tradição da Chapa Gaúcha
+                    </h3>
+                  </div>
+                </div>
+
+                <span className="text-xs px-3 py-1 rounded-full bg-[#181b22] border border-[#272c38] text-[#f59e0b] font-bold">
+                  ★ 4,9 no Google
+                </span>
+              </div>
+
+              {/* Big Quote */}
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-[#161820] to-[#0e1015] border border-[#20242e] relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ea580c]/5 rounded-full blur-2xl pointer-events-none" />
+                <p className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight leading-snug">
+                  “BOAS IDEIAS NASCEM DE GRANDES LANCHES!”
+                </p>
+                <p className="text-xs text-[#a39e93] mt-2 font-medium">
+                  — O lema oficial que estampa nosso espaço em Três Coroas.
+                </p>
+              </div>
+
+              {/* 3 Pillars of Craftsmanship */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+                <div className="p-4 rounded-xl bg-[#15171e] border border-[#21252f] space-y-1">
+                  <Award className="w-5 h-5 text-[#ea580c] mx-auto" />
+                  <h4 className="font-heading font-bold text-xs text-white uppercase">Pão na Chapa</h4>
+                  <p className="text-[11px] text-[#868074]">Prensado e crocante</p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#15171e] border border-[#21252f] space-y-1">
+                  <Heart className="w-5 h-5 text-[#e11d48] mx-auto" />
+                  <h4 className="font-heading font-bold text-xs text-white uppercase">Sem Miséria</h4>
+                  <p className="text-[11px] text-[#868074]">Porção farta no prato</p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#15171e] border border-[#21252f] space-y-1">
+                  <ShieldCheck className="w-5 h-5 text-[#22c55e] mx-auto" />
+                  <h4 className="font-heading font-bold text-xs text-white uppercase">Feito na Hora</h4>
+                  <p className="text-[11px] text-[#868074]">Carne no ponto exato</p>
                 </div>
               </div>
 
-              {/* Overlapping Secondary Image: Local vibe & generous portion */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="hidden sm:block absolute -bottom-6 right-0 md:-bottom-8 md:-right-2 w-3/5 rounded-2xl overflow-hidden border-2 border-[#1f2229] shadow-2xl aspect-square group"
-              >
-                <img
-                  src={porcaoImg}
-                  alt="Porção farta de petiscos da Max’s Lanches"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-3 right-3 text-left">
-                  <span className="text-[10px] font-bold text-[#fbbf24] uppercase tracking-wider block">
-                    Porções da Casa
-                  </span>
-                  <p className="text-xs font-semibold text-white">
-                    Para dividir com os amigos
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Authentic Neon Quote Accent - From their actual Instagram display */}
-              <motion.div 
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 left-2 md:-left-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-2xl bg-[#15171d]/95 backdrop-blur-md border border-[#2b303c] shadow-xl max-w-[210px] sm:max-w-[240px]"
-              >
-                <div className="flex items-center gap-1.5 text-[#ea580c] text-xs font-bold font-heading uppercase tracking-wider">
-                  <Flame className="w-4 h-4" />
-                  <span>Filosofia Max’s</span>
-                </div>
-                <p className="text-xs text-[#e6e1d8] font-medium mt-1 leading-snug">
-                  “Boas ideias nascem de grandes lanches!”
-                </p>
-              </motion.div>
+              {/* Address indicator */}
+              <div className="text-center text-xs text-[#868074] pt-2">
+                Rua dos Caigangues, 515 · Bairro Sander · Três Coroas - RS
+              </div>
 
             </motion.div>
           </div>

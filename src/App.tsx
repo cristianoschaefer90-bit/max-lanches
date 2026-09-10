@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutConcept } from './components/AboutConcept';
-import { FeaturedDishes } from './components/FeaturedDishes';
-import { RealPhotosGallery } from './components/RealPhotosGallery';
 import { MenuSection } from './components/MenuSection';
 import { OrderSection } from './components/OrderSection';
 import { SocialProof } from './components/SocialProof';
@@ -114,17 +112,7 @@ export default function App() {
         {/* 2. A Fome Bateu / Proposta da Max's */}
         <AboutConcept />
 
-        {/* 3. Os Queridinhos da Casa (Banquete Dourado, X-Tudo, X-Bacon, etc) */}
-        <FeaturedDishes
-          onSelectItem={(item) => handleAddToCart(item)}
-        />
-
-        {/* 3.1 Fotos Reais da Chapa da Max's */}
-        <RealPhotosGallery
-          onSelectItem={(item) => handleAddToCart(item)}
-        />
-
-        {/* 4. Cardápio Completo Interativo com Adicionais */}
+        {/* 3. Cardápio Completo Interativo com Adicionais */}
         <MenuSection
           onAddToCart={handleAddToCart}
         />

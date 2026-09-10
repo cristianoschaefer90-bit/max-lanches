@@ -1,154 +1,102 @@
-import React, { useState, useEffect } from 'react';
-import { PhoneCall, Star, Flame, UtensilsCrossed, Instagram, ArrowUpRight } from 'lucide-react';
+import React from 'react';
+import { PhoneCall, Star, Flame, UtensilsCrossed, Instagram, ArrowUpRight, Clock, MapPin, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 import { COMPANY_INFO } from '../data/menuData';
-import { photoStore } from '../utils/photoStore';
+import { BrandLogo } from './BrandLogo';
 
 interface HeroProps {
   onOpenOrder: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
-  const [heroImage, setHeroImage] = useState(() =>
-    photoStore.getPhoto(
-      'xbacon-farto',
-      'https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=85&w=1200&auto=format&fit=crop'
-    )
-  );
-
-  useEffect(() => {
-    const unsub = photoStore.subscribe(() => {
-      setHeroImage(
-        photoStore.getPhoto(
-          'xbacon-farto',
-          'https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=85&w=1200&auto=format&fit=crop'
-        )
-      );
-    });
-    return unsub;
-  }, []);
-
   return (
-    <section
-      id="inicio"
-      className="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 flex items-center overflow-hidden bg-[#0b0c0e] bg-noise"
+    <section 
+      id="inicio" 
+      className="relative min-h-[92vh] flex items-center pt-24 pb-16 lg:pt-28 lg:pb-20 overflow-hidden bg-[#0a0b0d] text-white"
     >
-      {/* Background Ambience / Warm Ember Radial */}
-      <motion.div 
-        animate={{ scale: [1, 1.15, 1], opacity: [0.08, 0.15, 0.08] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 right-0 w-[550px] h-[550px] bg-[#e03a14] rounded-full blur-[140px] pointer-events-none" 
-      />
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], opacity: [0.04, 0.09, 0.04] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#f59e0b] rounded-full blur-[120px] pointer-events-none" 
-      />
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-[#e03a14]/12 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-[#f59e0b]/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
-      {/* Decorative vertical editorial line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-28 bg-gradient-to-b from-[#e03a14]/30 to-transparent pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Column: Provocative Headline, Copy, Social Proof & CTAs */}
-          <div className="lg:col-span-7 space-y-7 text-left">
+          {/* Left Column: Hero Content & Value Proposition */}
+          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* Top Local Badge */}
+            {/* Status & Delivery Pill */}
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#181a1f] border border-[#2d313b] text-xs font-semibold text-[#f4efe6] shadow-sm"
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#16181f] border border-[#272b36] shadow-inner"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e03a14] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#e03a14]" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#ea580c] font-heading">
+                Chapa Quente em Três Coroas
               </span>
-              <span className="text-[#ea580c] uppercase tracking-widest text-[11px] font-bold">
-                Três Coroas · RS
+              <span className="text-[#49443c]">·</span>
+              <span className="text-xs text-[#a39e93] font-medium">
+                Local, Retirada & Delivery
               </span>
-              <span className="text-[#645e54]">|</span>
-              <span className="text-[#a39e93]">Lanches & Porções Artesanais</span>
             </motion.div>
 
-            {/* Powerful Display Headline with animated entrance */}
+            {/* Main Punchy Typography */}
             <motion.div 
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-              className="space-y-1"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="space-y-2"
             >
-              <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-[82px] leading-[0.94] tracking-tight text-white uppercase break-words">
-                DEU FOME. <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ea580c] via-[#f97316] to-[#f59e0b]">
-                  A GENTE RESOLVE.
-                </span>
+              <h1 className="font-display font-black text-4xl xs:text-5xl sm:text-6xl xl:text-7xl uppercase tracking-tight text-white leading-[1.05]">
+                O VERDADEIRO <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ea580c] via-[#f59e0b] to-[#f97316]">
+                  XIS GAÚCHO
+                </span> <br />
+                SEM MISÉRIA.
               </h1>
+              <p className="text-base sm:text-lg text-[#b8b2a5] max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed pt-2">
+                Pão prensado na chapa estalando, carne de primeira e porções fartas feitas com a generosidade que Três Coroas conhece e respeita.
+              </p>
             </motion.div>
 
-            {/* Direct, Honest Brand Statement */}
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="font-body text-sm sm:text-base lg:text-lg text-[#c7c1b5] max-w-xl leading-relaxed"
-            >
-              Lanche de verdade, daquele que chega na mesa e chama atenção. Na <strong className="text-white font-semibold">Max’s Lanches</strong>, é pão fresco, chapa quente, porção generosa e <span className="text-[#f59e0b] font-medium">zero miséria</span>.
-            </motion.p>
-
-            {/* Action Buttons with spring hover effects */}
+            {/* Quick Action Buttons */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4"
             >
-              {/* WhatsApp Direct Order Button */}
-              <motion.a
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
+              <a
                 href={COMPANY_INFO.whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                id="hero-cta-whatsapp"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white font-heading font-extrabold text-sm sm:text-base tracking-wider uppercase shadow-xl shadow-[#e03a14]/30 hover:shadow-[#e03a14]/50 transition-all min-h-[48px]"
+                id="hero-whatsapp-main-btn"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#e03a14] hover:bg-[#c9320f] text-white font-heading font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-[#e03a14]/30 hover:shadow-[#e03a14]/50 transition-all active:scale-[0.98] min-h-[52px]"
               >
                 <PhoneCall className="w-5 h-5 flex-shrink-0" />
-                PEDIR AGORA
-              </motion.a>
+                <span>PEDIR PELO WHATSAPP</span>
+              </a>
 
-              {/* View Menu Button */}
-              <motion.a
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
+              <a
                 href="#cardapio"
-                id="hero-cta-cardapio"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-[#181a1f] hover:bg-[#20242c] text-[#f4efe6] border border-[#2b303c] font-heading font-bold text-sm sm:text-base tracking-wide transition-colors min-h-[48px]"
+                id="hero-menu-btn"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-[#14161d] hover:bg-[#1e222b] text-white font-heading font-bold text-sm uppercase tracking-wider border border-[#272c38] hover:border-[#ea580c]/50 transition-all min-h-[52px]"
               >
-                <UtensilsCrossed className="w-4 h-4 text-[#ea580c] flex-shrink-0" />
-                VER CARDÁPIO
-              </motion.a>
-
-              {/* Real Photos Anchor Button */}
-              <motion.a
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                href="#fotos-reais"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-4 rounded-xl bg-[#13151b] hover:bg-[#1a1d25] text-[#b8b1a3] hover:text-white border border-[#242833] font-heading font-bold text-xs sm:text-sm tracking-wide transition-colors min-h-[48px]"
-              >
-                <span>FOTOS REAIS</span>
-              </motion.a>
+                <UtensilsCrossed className="w-4 h-4 text-[#ea580c]" />
+                <span>VER CARDÁPIO COMPLETO</span>
+              </a>
             </motion.div>
 
-            {/* Social Trust Indicator: 4.9 on Google */}
+            {/* Google Rating Social Proof Bar */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="pt-3 border-t border-[#1f222a] flex flex-wrap items-center gap-4 text-xs text-[#a39e93]"
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-[#a39e93]"
             >
-              <div className="flex items-center gap-1.5 text-amber-400">
+              <div className="flex items-center gap-1 text-amber-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                 ))}
@@ -167,102 +115,96 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
 
           </div>
 
-          {/* Right Column: Hero Visual with Gentle Float and Glow */}
+          {/* Right Column: High-End Gastropub Brand Showcase (Zero Food Photos) */}
           <div className="lg:col-span-5 relative">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="relative mx-auto max-w-[480px] lg:max-w-none"
+              className="relative mx-auto max-w-[460px] lg:max-w-none"
             >
               
-              {/* Floating ambient motion on the main card */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative rounded-3xl overflow-hidden border border-[#2d313c] bg-[#14161b] shadow-2xl shadow-black/80 group"
-              >
+              {/* Brand Showcase Card */}
+              <div className="relative rounded-3xl overflow-hidden border border-[#232732] bg-[#111318] p-8 sm:p-10 shadow-2xl shadow-black/80 space-y-7">
                 
-                {/* Image Overlay Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c0e] via-transparent to-black/30 z-10 pointer-events-none" />
-
-                {/* Hero Food Photography */}
-                <img
-                  src={heroImage}
-                  alt="Xis e lanche artesanal Max’s Lanches com queijo derretendo e carne suculenta"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-[320px] xs:h-[380px] sm:h-[440px] lg:h-[520px] object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                  loading="eager"
-                />
-
-                {/* Badge Overlay on Image: Authentic House Favorite */}
-                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20">
-                  <motion.span 
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-[#e03a14]/40 text-[11px] sm:text-xs font-heading font-bold text-white uppercase tracking-wider shadow-lg"
-                  >
-                    <Flame className="w-3.5 h-3.5 text-[#e03a14]" />
-                    Chapa Quente
-                  </motion.span>
-                </div>
-
-                {/* Bottom Overlay Label */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 z-20 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#121316]/95 backdrop-blur-md border border-[#2b303c] flex items-center justify-between">
-                  <div className="min-w-0 pr-2">
-                    <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#ea580c] block">
-                      Foto Real da Casa
+                {/* Top Glowing Brand Avatar */}
+                <div className="flex flex-col items-center text-center space-y-4">
+                  <div className="relative">
+                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-tr from-[#f59e0b] via-[#ea580c] to-[#e11d48] shadow-[0_0_35px_rgba(234,88,12,0.4)] flex items-center justify-center">
+                      <div className="w-full h-full rounded-full bg-[#0d0e12] flex items-center justify-center p-3">
+                        <BrandLogo size="lg" showText={false} />
+                      </div>
+                    </div>
+                    <span className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-[#22c55e] border-4 border-[#111318] flex items-center justify-center text-white text-xs">
+                      ✓
                     </span>
-                    <h3 className="font-heading font-bold text-sm sm:text-base text-white truncate">
-                      X-Bacon Especial
+                  </div>
+
+                  <div>
+                    <h3 className="font-heading font-black text-2xl sm:text-3xl text-white uppercase tracking-tight">
+                      MAX’S LANCHES
                     </h3>
-                    <p className="text-[11px] sm:text-xs text-[#a39e93] truncate">
-                      Bacon crocante em cubos, ovo caipira e queijo derretido
+                    <p className="text-xs sm:text-sm text-[#ea580c] font-bold tracking-wider uppercase mt-0.5">
+                      Tradição Gaúcha & Chapa Quente
                     </p>
                   </div>
-                  <div className="text-right flex-shrink-0">
-                    <span className="text-[9px] sm:text-[10px] text-[#868074] block uppercase">A partir de</span>
-                    <span className="font-heading font-black text-base sm:text-lg text-white">
-                      R$ 28<span className="text-[10px] sm:text-xs text-[#a39e93]">,00</span>
-                    </span>
+                </div>
+
+                {/* 3 Value Pillars */}
+                <div className="grid grid-cols-3 gap-2.5 text-center pt-2 border-t border-[#1d212a]">
+                  <div className="p-3 rounded-xl bg-[#161820] border border-[#212530]">
+                    <span className="text-base font-black text-white font-heading block">4,9 ★</span>
+                    <span className="text-[10px] text-[#8e887b] uppercase font-medium">Google</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[#161820] border border-[#212530]">
+                    <span className="text-base font-black text-white font-heading block">903+</span>
+                    <span className="text-[10px] text-[#8e887b] uppercase font-medium">Seguidores</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[#161820] border border-[#212530]">
+                    <span className="text-base font-black text-white font-heading block">TC</span>
+                    <span className="text-[10px] text-[#8e887b] uppercase font-medium">Três Coroas</span>
                   </div>
                 </div>
 
-              </motion.div>
-
-              {/* Instagram Direct Link on the First Image (Awwwards Gastropub Style) */}
-              <motion.a 
-                href={COMPANY_INFO.instagramUrl}
-                target="_blank"
-                rel="noreferrer"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                className="hidden sm:flex absolute -bottom-4 left-4 z-30 px-3.5 py-2.5 rounded-2xl bg-[#14161c]/95 backdrop-blur-md border border-white/15 shadow-2xl items-center gap-3 text-white group hover:border-[#ea580c]/60 transition-all cursor-pointer"
-                id="hero-instagram-badge"
-              >
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#f59e0b] via-[#ea580c] to-[#e11d48] flex items-center justify-center text-white shadow-md flex-shrink-0">
-                  <Instagram className="w-4 h-4" />
-                </div>
-                <div className="text-left">
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-bold text-white font-heading tracking-wide">@maxslanches</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#ea580c] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                {/* Info Block */}
+                <div className="space-y-2 text-xs text-[#a39e93] bg-[#161820] p-4 rounded-xl border border-[#212530]">
+                  <div className="flex items-center gap-2 text-[#cfcac2]">
+                    <Clock className="w-4 h-4 text-[#ea580c] flex-shrink-0" />
+                    <span>Seg-Sáb: 18h às 23h · Domingo com horário especial</span>
                   </div>
-                  <p className="text-[10px] text-[#a39e93]">
-                    Siga no Instagram · Fotos reais
-                  </p>
+                  <div className="flex items-center gap-2 text-[#cfcac2]">
+                    <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                    <span>R. dos Caigangues, 515 - Sander, Três Coroas</span>
+                  </div>
                 </div>
-              </motion.a>
 
-              {/* Floating Quick Order Pill */}
-              <motion.div 
-                animate={{ scale: [1, 1.04, 1] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="hidden md:flex absolute -top-3 right-4 z-30 px-3 py-1.5 rounded-xl bg-[#22c55e]/15 border border-[#22c55e]/30 backdrop-blur-md text-[#22c55e] text-xs font-semibold items-center gap-1.5"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-ping" />
-                <span>Delivery & Retirada</span>
-              </motion.div>
+                {/* Action Links */}
+                <div className="space-y-2.5 pt-1">
+                  <a
+                    href={COMPANY_INFO.whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    id="hero-card-whatsapp-btn"
+                    className="w-full py-3 px-4 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white text-xs font-heading font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md active:scale-98"
+                  >
+                    <PhoneCall className="w-4 h-4" />
+                    <span>CHAMAR NO WHATSAPP</span>
+                  </a>
+
+                  <a
+                    href={COMPANY_INFO.instagramUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    id="hero-card-instagram-btn"
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#1a1c24] hover:bg-[#222530] text-[#a39e93] hover:text-white text-xs font-medium flex items-center justify-center gap-2 border border-[#282d38] transition-colors"
+                  >
+                    <Instagram className="w-4 h-4 text-[#ea580c]" />
+                    <span>@maxslanches no Instagram</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+
+              </div>
 
             </motion.div>
           </div>
@@ -273,10 +215,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
       {/* Animated bottom ticker */}
       <div className="absolute bottom-0 left-0 right-0 border-t border-[#1a1c22] bg-[#0e0f13]/85 backdrop-blur-sm py-2.5 overflow-hidden w-full max-w-full">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold text-[#868074] whitespace-nowrap overflow-hidden">
-          <span>✦ PÃO FRESQUINHO</span>
+          <span>✦ PÃO PRENSADO NA HORA</span>
           <span className="hidden xs:inline">✦ QUEIJO DERRETENDO</span>
-          <span>✦ CARNE SUCULENTA</span>
-          <span className="hidden sm:inline">✦ PORÇÃO BEM SERVIDA</span>
+          <span>✦ CARNE SELECIONADA</span>
+          <span className="hidden sm:inline">✦ PORÇÃO SEM MISÉRIA</span>
           <span>✦ TRÊS COROAS - RS</span>
         </div>
       </div>
