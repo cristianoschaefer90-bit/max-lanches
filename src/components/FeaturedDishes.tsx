@@ -72,7 +72,7 @@ export const FeaturedDishes: React.FC<FeaturedDishesProps> = ({ onSelectItem }) 
                   ))}
                 </div>
 
-                <div className="pt-3 flex flex-wrap items-center gap-5">
+                <div className="pt-3 flex flex-col xs:flex-row items-start xs:items-center gap-4 sm:gap-5 w-full">
                   <div>
                     <span className="text-[11px] uppercase tracking-wider text-[#868074] block font-semibold">
                       Valor Especial
@@ -84,9 +84,9 @@ export const FeaturedDishes: React.FC<FeaturedDishesProps> = ({ onSelectItem }) 
 
                   <button
                     onClick={() => onSelectItem(banquete)}
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white font-heading font-bold text-sm tracking-wider uppercase shadow-lg shadow-[#e03a14]/25 transition-all hover:scale-105 active:scale-100"
+                    className="w-full xs:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white font-heading font-bold text-sm tracking-wider uppercase shadow-lg shadow-[#e03a14]/25 transition-all active:scale-[0.98] min-h-[48px]"
                   >
-                    <Plus className="w-4 h-4" />
+                    <Plus className="w-4 h-4 flex-shrink-0" />
                     PEDIR O BANQUETE
                   </button>
                 </div>

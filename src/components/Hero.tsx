@@ -37,7 +37,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
 
             {/* Powerful Display Headline */}
             <div className="space-y-1">
-              <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-[82px] leading-[0.92] tracking-tight text-white uppercase">
+              <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-[82px] leading-[0.94] tracking-tight text-white uppercase break-words">
                 DEU FOME. <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ea580c] via-[#f97316] to-[#f59e0b]">
                   A GENTE RESOLVE.
@@ -46,21 +46,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
             </div>
 
             {/* Direct, Honest Brand Statement */}
-            <p className="font-body text-base sm:text-lg text-[#c7c1b5] max-w-xl leading-relaxed">
+            <p className="font-body text-sm sm:text-base lg:text-lg text-[#c7c1b5] max-w-xl leading-relaxed">
               Lanche de verdade, daquele que chega na mesa e chama atenção. Na <strong className="text-white font-semibold">Max’s Lanches</strong>, é pão fresco, chapa quente, porção generosa e <span className="text-[#f59e0b] font-medium">zero miséria</span>.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full">
               {/* WhatsApp Direct Order Button */}
               <a
                 href={COMPANY_INFO.whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
                 id="hero-cta-whatsapp"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white font-heading font-extrabold text-base tracking-wider uppercase shadow-xl shadow-[#e03a14]/30 hover:shadow-[#e03a14]/40 transition-all hover:-translate-y-0.5 active:translate-y-0"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white font-heading font-extrabold text-sm sm:text-base tracking-wider uppercase shadow-xl shadow-[#e03a14]/30 hover:shadow-[#e03a14]/40 transition-all active:scale-[0.98] min-h-[48px]"
               >
-                <PhoneCall className="w-5 h-5" />
+                <PhoneCall className="w-5 h-5 flex-shrink-0" />
                 PEDIR AGORA
               </a>
 
@@ -68,10 +68,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
               <a
                 href="#cardapio"
                 id="hero-cta-cardapio"
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-[#181a1f] hover:bg-[#20242c] text-[#f4efe6] border border-[#2b303c] font-heading font-bold text-base tracking-wide transition-colors"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-[#181a1f] hover:bg-[#20242c] text-[#f4efe6] border border-[#2b303c] font-heading font-bold text-sm sm:text-base tracking-wide transition-colors min-h-[48px]"
               >
-                <UtensilsCrossed className="w-4 h-4 text-[#ea580c]" />
-                VER CARDÁPIO COMPLETO
+                <UtensilsCrossed className="w-4 h-4 text-[#ea580c] flex-shrink-0" />
+                VER CARDÁPIO
               </a>
             </div>
 
@@ -111,58 +111,58 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
                   src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=85&w=1200&auto=format&fit=crop"
                   alt="Xis e lanche artesanal Max’s Lanches com queijo derretendo e carne suculenta"
                   referrerPolicy="no-referrer"
-                  className="w-full h-[420px] sm:h-[480px] lg:h-[520px] object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-[320px] xs:h-[380px] sm:h-[440px] lg:h-[520px] object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="eager"
                 />
 
                 {/* Badge Overlay on Image: Authentic House Favorite */}
-                <div className="absolute top-4 left-4 z-20">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/75 backdrop-blur-md border border-white/10 text-xs font-heading font-bold text-white uppercase tracking-wider">
+                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-black/75 backdrop-blur-md border border-white/10 text-[11px] sm:text-xs font-heading font-bold text-white uppercase tracking-wider">
                     <Flame className="w-3.5 h-3.5 text-[#e03a14]" />
                     Chapa Quente
                   </span>
                 </div>
 
                 {/* Bottom Overlay Label */}
-                <div className="absolute bottom-5 left-5 right-5 z-20 p-4 rounded-2xl bg-[#121316]/90 backdrop-blur-md border border-[#2b303c] flex items-center justify-between">
-                  <div>
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#ea580c] block">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 z-20 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#121316]/90 backdrop-blur-md border border-[#2b303c] flex items-center justify-between">
+                  <div className="min-w-0 pr-2">
+                    <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#ea580c] block">
                       Favorito da Galera
                     </span>
-                    <h3 className="font-heading font-bold text-base text-white">
+                    <h3 className="font-heading font-bold text-sm sm:text-base text-white truncate">
                       X-Tudo & X-Bacon
                     </h3>
-                    <p className="text-xs text-[#a39e93]">
+                    <p className="text-[11px] sm:text-xs text-[#a39e93] truncate">
                       Queijo derretido, bacon farto e bife suculento
                     </p>
                   </div>
-                  <div className="text-right">
-                    <span className="text-[10px] text-[#868074] block uppercase">A partir de</span>
-                    <span className="font-heading font-black text-lg text-white">
-                      R$ 28<span className="text-xs text-[#a39e93]">,00</span>
+                  <div className="text-right flex-shrink-0">
+                    <span className="text-[9px] sm:text-[10px] text-[#868074] block uppercase">A partir de</span>
+                    <span className="font-heading font-black text-base sm:text-lg text-white">
+                      R$ 28<span className="text-[10px] sm:text-xs text-[#a39e93]">,00</span>
                     </span>
                   </div>
                 </div>
 
               </div>
 
-              {/* Floating Floating Accent Badge: Generosidade Gaúcha */}
-              <div className="hidden sm:flex absolute -bottom-5 -left-6 z-30 p-3.5 rounded-2xl bg-[#16181e] border border-[#2b303c] shadow-xl items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#f59e0b]/15 border border-[#f59e0b]/30 flex items-center justify-center text-[#f59e0b]">
-                  <Sparkles className="w-5 h-5" />
+              {/* Floating Accent Badge: Generosidade Gaúcha */}
+              <div className="hidden md:flex absolute -bottom-4 left-4 z-30 p-3 rounded-2xl bg-[#16181e] border border-[#2b303c] shadow-xl items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#f59e0b]/15 border border-[#f59e0b]/30 flex items-center justify-center text-[#f59e0b]">
+                  <Sparkles className="w-4 h-4" />
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-white font-heading uppercase tracking-wide">
                     Porção Generosa
                   </h4>
-                  <p className="text-[11px] text-[#a39e93]">
+                  <p className="text-[10px] text-[#a39e93]">
                     Sem miséria no prato
                   </p>
                 </div>
               </div>
 
               {/* Floating Quick Order Pill */}
-              <div className="hidden sm:flex absolute -top-4 -right-4 z-30 px-3.5 py-2 rounded-xl bg-[#22c55e]/15 border border-[#22c55e]/30 backdrop-blur-md text-[#22c55e] text-xs font-semibold items-center gap-1.5">
+              <div className="hidden md:flex absolute -top-3 right-4 z-30 px-3 py-1.5 rounded-xl bg-[#22c55e]/15 border border-[#22c55e]/30 backdrop-blur-md text-[#22c55e] text-xs font-semibold items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-ping" />
                 <span>Delivery & Retirada</span>
               </div>
@@ -174,12 +174,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
       </div>
 
       {/* Subtle bottom ticker for immediate appetite stimulation */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-[#1a1c22] bg-[#0e0f13]/80 backdrop-blur-sm py-2.5 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between text-[11px] uppercase tracking-widest font-semibold text-[#868074]">
+      <div className="absolute bottom-0 left-0 right-0 border-t border-[#1a1c22] bg-[#0e0f13]/80 backdrop-blur-sm py-2.5 overflow-hidden w-full max-w-full">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold text-[#868074] whitespace-nowrap overflow-hidden">
           <span>✦ PÃO FRESQUINHO</span>
-          <span className="hidden sm:inline">✦ QUEIJO DERRETENDO</span>
+          <span className="hidden xs:inline">✦ QUEIJO DERRETENDO</span>
           <span>✦ CARNE SUCULENTA</span>
-          <span className="hidden md:inline">✦ PORÇÃO BEM SERVIDA</span>
+          <span className="hidden sm:inline">✦ PORÇÃO BEM SERVIDA</span>
           <span>✦ TRÊS COROAS - RS</span>
         </div>
       </div>

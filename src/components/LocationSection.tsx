@@ -65,23 +65,23 @@ export const LocationSection: React.FC = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-2 flex flex-wrap items-center gap-3">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <a
                   href={COMPANY_INFO.mapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white text-xs font-heading font-bold uppercase tracking-wider transition-all shadow-md shadow-[#e03a14]/20"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white text-xs font-heading font-bold uppercase tracking-wider transition-all shadow-md shadow-[#e03a14]/20 min-h-[44px]"
                 >
-                  <Navigation className="w-3.5 h-3.5" />
-                  COMO CHEGAR (GOOGLE MAPS)
+                  <Navigation className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span>COMO CHEGAR (GOOGLE MAPS)</span>
                 </a>
 
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1b1e25] hover:bg-[#232731] border border-[#2c313d] text-white text-xs font-heading font-bold uppercase tracking-wider transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#1b1e25] hover:bg-[#232731] border border-[#2c313d] text-white text-xs font-heading font-bold uppercase tracking-wider transition-colors min-h-[44px]"
                 >
-                  <Phone className="w-3.5 h-3.5 text-[#22c55e]" />
-                  LIGAR: {COMPANY_INFO.phone}
+                  <Phone className="w-3.5 h-3.5 text-[#22c55e] flex-shrink-0" />
+                  <span>LIGAR: {COMPANY_INFO.phone}</span>
                 </a>
               </div>
             </div>
@@ -146,12 +146,12 @@ export const LocationSection: React.FC = () => {
             />
             
             {/* Floating Location Overlay Card */}
-            <div className="p-4 bg-[#121419] border-t border-[#232731] flex items-center justify-between">
-              <div className="space-y-0.5">
-                <span className="text-xs font-bold text-white block">
+            <div className="p-4 bg-[#121419] border-t border-[#232731] flex flex-col xs:flex-row items-start xs:items-center justify-between gap-3">
+              <div className="space-y-0.5 min-w-0">
+                <span className="text-xs font-bold text-white block truncate">
                   Max’s Lanches · Três Coroas - RS
                 </span>
-                <span className="text-[11px] text-[#868074]">
+                <span className="text-[11px] text-[#868074] block">
                   Fácil acesso com estacionamento em frente e no entorno
                 </span>
               </div>
@@ -159,7 +159,7 @@ export const LocationSection: React.FC = () => {
                 href={COMPANY_INFO.mapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="px-3.5 py-1.5 rounded-lg bg-[#1f232c] hover:bg-[#282d38] border border-[#2f3542] text-xs font-bold text-white transition-colors flex items-center gap-1.5"
+                className="w-full xs:w-auto text-center justify-center px-3.5 py-2 rounded-lg bg-[#1f232c] hover:bg-[#282d38] border border-[#2f3542] text-xs font-bold text-white transition-colors flex items-center gap-1.5 flex-shrink-0 min-h-[40px]"
               >
                 Abrir Mapa ↗
               </a>

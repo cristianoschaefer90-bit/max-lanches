@@ -94,12 +94,12 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart }) => {
         {/* Filter controls & Search */}
         <div className="space-y-4">
           {/* Category Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start md:justify-center">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start md:justify-center w-full max-w-full px-1">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-bold uppercase tracking-wider whitespace-nowrap transition-all flex-shrink-0 min-h-[44px] ${
                   activeCategory === cat.id
                     ? 'bg-[#e03a14] text-white shadow-lg shadow-[#e03a14]/25'
                     : 'bg-[#15171d] text-[#9c9589] hover:text-white hover:bg-[#1f2229] border border-[#232731]'
@@ -239,8 +239,8 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart }) => {
         )}
 
         {/* Direct WhatsApp Callout */}
-        <div className="p-6 rounded-2xl bg-gradient-to-r from-[#181a20] to-[#14161c] border border-[#272b35] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="space-y-1 text-center sm:text-left">
+        <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#181a20] to-[#14161c] border border-[#272b35] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+          <div className="space-y-1 text-center sm:text-left min-w-0">
             <h4 className="font-heading font-bold text-base text-white">
               Prefere pedir pelo telefone ou WhatsApp sem frescura?
             </h4>
@@ -252,10 +252,10 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart }) => {
             href={COMPANY_INFO.whatsappUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#22c55e]/20 transition-all flex-shrink-0"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#22c55e] hover:bg-[#16a34a] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#22c55e]/20 transition-all flex-shrink-0 min-h-[44px]"
           >
-            <MessageCircle className="w-4 h-4" />
-            CHAMAR NO WHATSAPP ({COMPANY_INFO.phone})
+            <MessageCircle className="w-4 h-4 flex-shrink-0" />
+            <span>CHAMAR NO WHATSAPP</span>
           </a>
         </div>
 
@@ -333,7 +333,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart }) => {
                     <span className="text-[10px] text-[#736c61]">Opcional</span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
                     {ADDITIONS_LIST.map((add) => {
                       const isSelected = selectedAdditions.some((a) => a.id === add.id);
                       return (
@@ -341,7 +341,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ onAddToCart }) => {
                           key={add.id}
                           type="button"
                           onClick={() => handleToggleAddition(add)}
-                          className={`p-2 rounded-lg border flex items-center justify-between text-left transition-all ${
+                          className={`p-2.5 rounded-lg border flex items-center justify-between text-left transition-all min-h-[44px] ${
                             isSelected
                               ? 'border-[#ea580c] bg-[#ea580c]/20 text-white'
                               : 'border-[#252830] bg-[#1a1d24] text-[#a39e93] hover:text-white'

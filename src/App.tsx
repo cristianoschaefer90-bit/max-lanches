@@ -97,7 +97,7 @@ export default function App() {
   const totalCartCount = cart.reduce((acc, curr) => acc + curr.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#0b0c0e] text-[#f4efe6] font-body selection:bg-[#e03a14] selection:text-white relative">
+    <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#0b0c0e] text-[#f4efe6] font-body selection:bg-[#e03a14] selection:text-white relative">
       {/* Navigation Header */}
       <Navbar
         cartCount={totalCartCount}
@@ -105,7 +105,7 @@ export default function App() {
       />
 
       {/* Main Sections */}
-      <main>
+      <main className="w-full max-w-full overflow-x-clip">
         {/* 1. Hero Dobra Principal */}
         <Hero onOpenOrder={() => setIsOrderDrawerOpen(true)} />
 

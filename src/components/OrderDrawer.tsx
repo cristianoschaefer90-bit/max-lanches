@@ -92,24 +92,24 @@ export const OrderDrawer: React.FC<OrderDrawerProps> = ({
         onClick={onClose}
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-[#121316] border-l border-[#252830] text-[#f4efe6] shadow-2xl flex flex-col">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
+        <div className="w-full sm:w-screen max-w-md bg-[#121316] border-l border-[#252830] text-[#f4efe6] shadow-2xl flex flex-col h-full">
           {/* Header */}
-          <div className="p-5 border-b border-[#252830] flex items-center justify-between bg-[#16181d]">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#e03a14]/15 border border-[#e03a14]/30 flex items-center justify-center text-[#e03a14]">
+          <div className="p-4 sm:p-5 border-b border-[#252830] flex items-center justify-between bg-[#16181d] flex-shrink-0">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-10 h-10 rounded-xl bg-[#e03a14]/15 border border-[#e03a14]/30 flex items-center justify-center text-[#e03a14] flex-shrink-0">
                 <ShoppingBag className="w-5 h-5" />
               </div>
-              <div>
-                <h2 className="font-heading font-bold text-lg text-white">Seu Pedido</h2>
-                <p className="text-xs text-[#9c9589]">
+              <div className="min-w-0">
+                <h2 className="font-heading font-bold text-base sm:text-lg text-white truncate">Seu Pedido</h2>
+                <p className="text-xs text-[#9c9589] truncate">
                   {cart.length === 0 ? 'Nenhum item adicionado' : `${cart.length} ${cart.length === 1 ? 'item' : 'itens'} no pedido`}
                 </p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="p-2 text-[#9c9589] hover:text-white rounded-lg hover:bg-[#20232b] transition-colors"
+              className="w-10 h-10 flex items-center justify-center text-[#9c9589] hover:text-white rounded-lg hover:bg-[#20232b] transition-colors flex-shrink-0"
               aria-label="Fechar carrinho"
             >
               <X className="w-5 h-5" />
@@ -298,7 +298,7 @@ export const OrderDrawer: React.FC<OrderDrawerProps> = ({
 
           {/* Footer with WhatsApp CTA */}
           {cart.length > 0 && (
-            <div className="p-5 bg-[#16181d] border-t border-[#252830] space-y-3">
+            <div className="p-4 sm:p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] bg-[#16181d] border-t border-[#252830] space-y-3 flex-shrink-0">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-[#a39e93]">Subtotal estimado</span>
                 <span className="font-heading font-extrabold text-xl text-white">
@@ -308,11 +308,11 @@ export const OrderDrawer: React.FC<OrderDrawerProps> = ({
 
               <button
                 onClick={handleSendToWhatsApp}
-                className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#22c55e] to-[#16a34a] hover:from-[#16a34a] hover:to-[#15803d] text-white font-heading font-bold text-sm tracking-wide shadow-lg shadow-[#22c55e]/20 flex items-center justify-center gap-2 transition-all group active:scale-[0.99]"
+                className="w-full py-4 px-4 rounded-xl bg-gradient-to-r from-[#22c55e] to-[#16a34a] hover:from-[#16a34a] hover:to-[#15803d] text-white font-heading font-bold text-sm tracking-wide shadow-lg shadow-[#22c55e]/20 flex items-center justify-center gap-2 transition-all group active:scale-[0.99] min-h-[48px]"
               >
-                <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                FINALIZAR PEDIDO NO WHATSAPP
-                <ArrowRight className="w-4 h-4" />
+                <Send className="w-4 h-4 transition-transform group-hover:translate-x-0.5 flex-shrink-0" />
+                <span className="truncate">FINALIZAR PEDIDO NO WHATSAPP</span>
+                <ArrowRight className="w-4 h-4 flex-shrink-0" />
               </button>
 
               <p className="text-[11px] text-center text-[#827b70]">

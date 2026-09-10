@@ -25,13 +25,13 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 right-5 z-40 flex flex-col items-end gap-3 animate-in fade-in slide-in-from-bottom-6 duration-300">
+    <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-3.5 sm:right-5 z-40 flex flex-col items-end gap-3 pointer-events-auto">
       
       {/* Floating Cart Button (if items in cart) */}
       {cartCount > 0 && (
         <button
           onClick={onOpenCart}
-          className="p-3.5 rounded-full bg-[#181a22] text-white border border-[#2e3342] shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group"
+          className="p-3 sm:p-3.5 rounded-full bg-[#181a22] text-white border border-[#2e3342] shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group min-w-[44px] min-h-[44px]"
           title="Ver itens no seu pedido"
           aria-label="Abrir carrinho de compras"
         >
@@ -52,10 +52,10 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({
         href={COMPANY_INFO.whatsappUrl}
         target="_blank"
         rel="noreferrer"
-        className="group flex items-center gap-3 p-3.5 sm:px-5 sm:py-3.5 rounded-full bg-gradient-to-r from-[#22c55e] to-[#16a34a] hover:from-[#16a34a] hover:to-[#15803d] text-white shadow-2xl shadow-[#22c55e]/40 transition-all hover:scale-105 active:scale-95"
+        className="group flex items-center gap-2.5 p-3.5 sm:px-5 sm:py-3.5 rounded-full bg-gradient-to-r from-[#22c55e] to-[#16a34a] hover:from-[#16a34a] hover:to-[#15803d] text-white shadow-2xl shadow-[#22c55e]/40 transition-all hover:scale-105 active:scale-95 min-w-[48px] min-h-[48px]"
         aria-label="Pedir no WhatsApp da Max's Lanches"
       >
-        <MessageCircle className="w-6 h-6 transition-transform group-hover:rotate-12" />
+        <MessageCircle className="w-6 h-6 transition-transform group-hover:rotate-12 flex-shrink-0" />
         <div className="hidden sm:flex flex-col text-left leading-tight">
           <span className="text-[10px] uppercase font-bold tracking-wider opacity-90">
             Fazer Pedido

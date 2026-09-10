@@ -39,7 +39,7 @@ export const AboutConcept: React.FC = () => {
               </div>
 
               {/* Overlapping Secondary Image: Local vibe & generous portion */}
-              <div className="hidden sm:block absolute -bottom-8 -right-6 w-3/5 rounded-2xl overflow-hidden border-2 border-[#1f2229] shadow-2xl aspect-square">
+              <div className="hidden sm:block absolute -bottom-6 right-0 md:-bottom-8 md:-right-2 w-3/5 rounded-2xl overflow-hidden border-2 border-[#1f2229] shadow-2xl aspect-square">
                 <img
                   src="https://images.unsplash.com/photo-1576107232684-1279f3908594?q=85&w=800&auto=format&fit=crop"
                   alt="Porção farta de petiscos da Max’s Lanches"
@@ -59,7 +59,7 @@ export const AboutConcept: React.FC = () => {
               </div>
 
               {/* Authentic Neon Quote Accent - From their actual Instagram display */}
-              <div className="absolute -top-5 -left-3 sm:-left-6 px-4 py-3 rounded-2xl bg-[#15171d]/95 backdrop-blur-md border border-[#2b303c] shadow-xl max-w-[240px]">
+              <div className="absolute -top-4 left-2 md:-left-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-2xl bg-[#15171d]/95 backdrop-blur-md border border-[#2b303c] shadow-xl max-w-[210px] sm:max-w-[240px]">
                 <div className="flex items-center gap-1.5 text-[#ea580c] text-xs font-bold font-heading uppercase tracking-wider">
                   <Flame className="w-4 h-4" />
                   <span>Filosofia Max’s</span>
@@ -80,7 +80,7 @@ export const AboutConcept: React.FC = () => {
                 A proposta da Max’s
               </span>
               
-              <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white uppercase leading-[1.05] tracking-tight">
+              <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white uppercase leading-[1.05] tracking-tight break-words">
                 QUANDO A FOME É DE VERDADE, O LANCHE TAMBÉM TEM QUE SER.
               </h2>
             </div>

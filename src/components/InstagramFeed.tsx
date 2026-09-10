@@ -23,7 +23,7 @@ export const InstagramFeed: React.FC = () => {
             href={COMPANY_INFO.instagramUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#15171d] hover:bg-[#1f222b] text-white border border-[#272b35] hover:border-[#ea580c] text-xs font-heading font-bold uppercase tracking-wider transition-all self-start md:self-auto"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#15171d] hover:bg-[#1f222b] text-white border border-[#272b35] hover:border-[#ea580c] text-xs font-heading font-bold uppercase tracking-wider transition-all self-stretch sm:self-auto min-h-[44px]"
           >
             <Instagram className="w-4 h-4 text-[#ea580c]" />
             <span>SEGUIR NO INSTAGRAM</span>

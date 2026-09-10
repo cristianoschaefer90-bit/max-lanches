@@ -66,10 +66,11 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
           : 'bg-gradient-to-b from-[#0b0c0e]/95 to-transparent py-4'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
         {/* Brand Identity */}
-        <a href="#inicio" className="group flex items-center gap-2 focus:outline-none">
-          <BrandLogo size="md" />
+        <a href="#inicio" className="group flex items-center gap-2 focus:outline-none min-w-0">
+          <BrandLogo size="sm" className="xs:hidden" />
+          <BrandLogo size="md" className="hidden xs:inline-flex" />
         </a>
 
         {/* Desktop Navigation Links */}
@@ -86,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           {/* Status Indicator */}
           <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#181a1f] border border-[#252830] text-xs">
             <span
@@ -102,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
           {/* Cart Icon / Order Trigger */}
           <button
             onClick={onOpenCart}
-            className="relative p-2.5 rounded-xl bg-[#181a1f] hover:bg-[#22252c] border border-[#252830] text-white transition-all group focus:outline-none"
+            className="relative w-11 h-11 flex items-center justify-center rounded-xl bg-[#181a1f] hover:bg-[#22252c] border border-[#252830] text-white transition-all group focus:outline-none"
             title="Abrir carrinho de pedidos"
             aria-label="Ver pedido"
           >
@@ -128,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl bg-[#181a1f] border border-[#252830] text-white hover:bg-[#22252c] transition-colors focus:outline-none"
+            className="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-[#181a1f] border border-[#252830] text-white hover:bg-[#22252c] transition-colors focus:outline-none"
             aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
