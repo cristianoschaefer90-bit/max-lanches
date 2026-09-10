@@ -1,5 +1,6 @@
 import React from 'react';
 import { Instagram, MapPin, Clock, Check } from 'lucide-react';
+import { motion } from 'motion/react';
 import { COMPANY_INFO } from '../data/menuData';
 import { BrandLogo } from './BrandLogo';
 
@@ -7,12 +8,22 @@ export const InstagramFeed: React.FC = () => {
   return (
     <section id="instagram" className="py-20 lg:py-28 relative bg-[#09090b] text-white overflow-hidden">
       {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#ea580c]/10 via-[#ec4899]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <motion.div 
+        animate={{ scale: [1, 1.1, 1], opacity: [0.08, 0.14, 0.08] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#ea580c]/20 via-[#ec4899]/10 to-transparent rounded-full blur-3xl pointer-events-none" 
+      />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Eyebrow & Main Title matching user screenshot */}
-        <div className="text-center space-y-3 mb-10">
+        {/* Eyebrow & Main Title */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center space-y-3 mb-10"
+        >
           <div className="inline-flex items-center gap-2 text-[#ea580c] text-xs font-bold uppercase tracking-[0.2em]">
             <Instagram className="w-4 h-4 text-[#ea580c]" />
             <span>INSTAGRAM OFICIAL</span>
@@ -21,10 +32,17 @@ export const InstagramFeed: React.FC = () => {
           <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white uppercase tracking-tight">
             SIGA O MAX'S LANCHES
           </h2>
-        </div>
+        </motion.div>
 
-        {/* The Exact Card from the User Reference Screenshot */}
-        <div className="relative rounded-2xl bg-[#111216] border border-[#22252e] shadow-2xl overflow-hidden">
+        {/* The Exact Card from User Screenshot with Smooth Spring Motion */}
+        <motion.div 
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ y: -4, transition: { duration: 0.25 } }}
+          className="relative rounded-2xl bg-[#111216] border border-[#22252e] shadow-2xl overflow-hidden transition-colors hover:border-[#343846]"
+        >
           
           {/* Top gradient accent line (orange to magenta/pink) */}
           <div className="h-[3px] w-full bg-gradient-to-r from-[#f97316] via-[#ea580c] to-[#d946ef]" />
@@ -34,13 +52,23 @@ export const InstagramFeed: React.FC = () => {
             {/* Top section: Avatar on left, details on right */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
               
-              {/* Circular Avatar with Glowing Instagram Ring */}
+              {/* Circular Avatar with Glowing Breathing Instagram Ring */}
               <div className="relative flex-shrink-0">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[3px] bg-gradient-to-tr from-[#f97316] via-[#ea580c] to-[#ec4899] shadow-[0_0_25px_rgba(234,88,12,0.35)] flex items-center justify-center">
+                <motion.div 
+                  animate={{ 
+                    boxShadow: [
+                      '0 0 20px rgba(234, 88, 12, 0.3)', 
+                      '0 0 35px rgba(236, 72, 153, 0.5)', 
+                      '0 0 20px rgba(234, 88, 12, 0.3)'
+                    ] 
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-[3px] bg-gradient-to-tr from-[#f97316] via-[#ea580c] to-[#ec4899] flex items-center justify-center"
+                >
                   <div className="w-full h-full rounded-full bg-[#0d0e12] flex items-center justify-center overflow-hidden p-2">
                     <BrandLogo size="md" showText={false} />
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               {/* Account Info */}
@@ -59,16 +87,18 @@ export const InstagramFeed: React.FC = () => {
                   </div>
 
                   {/* Gradient Pill Button: Seguir no Instagram */}
-                  <a
+                  <motion.a
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.96 }}
                     href={COMPANY_INFO.instagramUrl}
                     target="_blank"
                     rel="noreferrer"
                     id="instagram-follow-top-btn"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#f97316] via-[#ea580c] to-[#d946ef] hover:opacity-95 text-white font-heading font-bold text-xs tracking-wide shadow-md shadow-[#ea580c]/25 active:scale-95 transition-all"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#f97316] via-[#ea580c] to-[#d946ef] text-white font-heading font-bold text-xs tracking-wide shadow-md shadow-[#ea580c]/25 transition-opacity hover:opacity-95"
                   >
                     <Instagram className="w-3.5 h-3.5 text-white" />
                     <span>Seguir no Instagram</span>
-                  </a>
+                  </motion.a>
                 </div>
 
                 {/* Follower Stats Bar */}
@@ -116,7 +146,9 @@ export const InstagramFeed: React.FC = () => {
 
             {/* Bottom Full-Width Button matching screenshot */}
             <div className="pt-2">
-              <a
+              <motion.a
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
                 href={COMPANY_INFO.instagramUrl}
                 target="_blank"
                 rel="noreferrer"
@@ -125,12 +157,12 @@ export const InstagramFeed: React.FC = () => {
               >
                 <Instagram className="w-4 h-4 text-[#ea580c] group-hover:scale-110 transition-transform" />
                 <span className="tracking-widest">ACESSAR PERFIL @MAXSLANCHES</span>
-              </a>
+              </motion.a>
             </div>
 
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </section>

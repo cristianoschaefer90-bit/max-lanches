@@ -14,9 +14,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
       id="inicio" 
       className="relative min-h-[92vh] flex items-center pt-24 pb-16 lg:pt-28 lg:pb-20 overflow-hidden bg-[#0a0b0d] text-white"
     >
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-[#e03a14]/12 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-[#f59e0b]/8 rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient background glows with subtle breathing animation */}
+      <motion.div 
+        animate={{ scale: [1, 1.1, 1], opacity: [0.10, 0.16, 0.10] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 -left-48 w-96 h-96 bg-[#e03a14] rounded-full blur-3xl pointer-events-none" 
+      />
+      <motion.div 
+        animate={{ scale: [1, 1.12, 1], opacity: [0.06, 0.11, 0.06] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-[#f59e0b] rounded-full blur-3xl pointer-events-none" 
+      />
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -61,32 +69,38 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
               </p>
             </motion.div>
 
-            {/* Quick Action Buttons */}
+            {/* Quick Action Buttons with Spring Interactions */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4"
             >
-              <a
+              <motion.a
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 href={COMPANY_INFO.whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
                 id="hero-whatsapp-main-btn"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#e03a14] hover:bg-[#c9320f] text-white font-heading font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-[#e03a14]/30 hover:shadow-[#e03a14]/50 transition-all active:scale-[0.98] min-h-[52px]"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#e03a14] hover:bg-[#c9320f] text-white font-heading font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-[#e03a14]/30 hover:shadow-[#e03a14]/50 transition-all min-h-[52px]"
               >
                 <PhoneCall className="w-5 h-5 flex-shrink-0" />
                 <span>PEDIR PELO WHATSAPP</span>
-              </a>
+              </motion.a>
 
-              <a
+              <motion.a
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 href="#cardapio"
                 id="hero-menu-btn"
                 className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-[#14161d] hover:bg-[#1e222b] text-white font-heading font-bold text-sm uppercase tracking-wider border border-[#272c38] hover:border-[#ea580c]/50 transition-all min-h-[52px]"
               >
                 <UtensilsCrossed className="w-4 h-4 text-[#ea580c]" />
                 <span>VER CARDÁPIO COMPLETO</span>
-              </a>
+              </motion.a>
             </motion.div>
 
             {/* Google Rating Social Proof Bar */}
@@ -115,26 +129,40 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
 
           </div>
 
-          {/* Right Column: High-End Gastropub Brand Showcase (Zero Food Photos) */}
+          {/* Right Column: High-End Gastropub Brand Showcase with Gentle Ambient Float */}
           <div className="lg:col-span-5 relative">
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="relative mx-auto max-w-[460px] lg:max-w-none"
             >
               
-              {/* Brand Showcase Card */}
-              <div className="relative rounded-3xl overflow-hidden border border-[#232732] bg-[#111318] p-8 sm:p-10 shadow-2xl shadow-black/80 space-y-7">
+              {/* Brand Showcase Card with subtle floating breathing motion */}
+              <motion.div 
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                className="relative rounded-3xl overflow-hidden border border-[#232732] bg-[#111318] p-8 sm:p-10 shadow-2xl shadow-black/80 space-y-7 backdrop-blur-md"
+              >
                 
                 {/* Top Glowing Brand Avatar */}
                 <div className="flex flex-col items-center text-center space-y-4">
                   <div className="relative">
-                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-tr from-[#f59e0b] via-[#ea580c] to-[#e11d48] shadow-[0_0_35px_rgba(234,88,12,0.4)] flex items-center justify-center">
+                    <motion.div 
+                      animate={{ 
+                        boxShadow: [
+                          '0 0 25px rgba(234, 88, 12, 0.35)', 
+                          '0 0 45px rgba(234, 88, 12, 0.55)', 
+                          '0 0 25px rgba(234, 88, 12, 0.35)'
+                        ] 
+                      }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-tr from-[#f59e0b] via-[#ea580c] to-[#e11d48] flex items-center justify-center"
+                    >
                       <div className="w-full h-full rounded-full bg-[#0d0e12] flex items-center justify-center p-3">
                         <BrandLogo size="lg" showText={false} />
                       </div>
-                    </div>
+                    </motion.div>
                     <span className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-[#22c55e] border-4 border-[#111318] flex items-center justify-center text-white text-xs">
                       ✓
                     </span>
@@ -150,27 +178,36 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
                   </div>
                 </div>
 
-                {/* 3 Value Pillars */}
+                {/* 3 Value Pillars with subtle interactive hover lift */}
                 <div className="grid grid-cols-3 gap-2.5 text-center pt-2 border-t border-[#1d212a]">
-                  <div className="p-3 rounded-xl bg-[#161820] border border-[#212530]">
+                  <motion.div 
+                    whileHover={{ y: -3, borderColor: 'rgba(234, 88, 12, 0.4)' }}
+                    className="p-3 rounded-xl bg-[#161820] border border-[#212530] transition-colors"
+                  >
                     <span className="text-base font-black text-white font-heading block">4,9 ★</span>
                     <span className="text-[10px] text-[#8e887b] uppercase font-medium">Google</span>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[#161820] border border-[#212530]">
+                  </motion.div>
+                  <motion.div 
+                    whileHover={{ y: -3, borderColor: 'rgba(234, 88, 12, 0.4)' }}
+                    className="p-3 rounded-xl bg-[#161820] border border-[#212530] transition-colors"
+                  >
                     <span className="text-base font-black text-white font-heading block">903+</span>
                     <span className="text-[10px] text-[#8e887b] uppercase font-medium">Seguidores</span>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[#161820] border border-[#212530]">
+                  </motion.div>
+                  <motion.div 
+                    whileHover={{ y: -3, borderColor: 'rgba(234, 88, 12, 0.4)' }}
+                    className="p-3 rounded-xl bg-[#161820] border border-[#212530] transition-colors"
+                  >
                     <span className="text-base font-black text-white font-heading block">TC</span>
                     <span className="text-[10px] text-[#8e887b] uppercase font-medium">Três Coroas</span>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Info Block */}
                 <div className="space-y-2 text-xs text-[#a39e93] bg-[#161820] p-4 rounded-xl border border-[#212530]">
                   <div className="flex items-center gap-2 text-[#cfcac2]">
                     <Clock className="w-4 h-4 text-[#ea580c] flex-shrink-0" />
-                    <span>Seg-Sáb: 18h às 23h · Domingo com horário especial</span>
+                    <span>Seg-Sáb: 18h às 23h · Domingo especial</span>
                   </div>
                   <div className="flex items-center gap-2 text-[#cfcac2]">
                     <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0" />
@@ -178,20 +215,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
                   </div>
                 </div>
 
-                {/* Action Links */}
+                {/* Action Links with Smooth Spring Hover */}
                 <div className="space-y-2.5 pt-1">
-                  <a
+                  <motion.a
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
                     href={COMPANY_INFO.whatsappUrl}
                     target="_blank"
                     rel="noreferrer"
                     id="hero-card-whatsapp-btn"
-                    className="w-full py-3 px-4 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white text-xs font-heading font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md active:scale-98"
+                    className="w-full py-3 px-4 rounded-xl bg-[#e03a14] hover:bg-[#c9320f] text-white text-xs font-heading font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md"
                   >
                     <PhoneCall className="w-4 h-4" />
                     <span>CHAMAR NO WHATSAPP</span>
-                  </a>
+                  </motion.a>
 
-                  <a
+                  <motion.a
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
                     href={COMPANY_INFO.instagramUrl}
                     target="_blank"
                     rel="noreferrer"
@@ -201,10 +242,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
                     <Instagram className="w-4 h-4 text-[#ea580c]" />
                     <span>@maxslanches no Instagram</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
+                  </motion.a>
                 </div>
 
-              </div>
+              </motion.div>
 
             </motion.div>
           </div>
