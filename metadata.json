@@ -1,0 +1,6 @@
+{
+  "name": "Max’s Lanches",
+  "description": "Lancheria em Três Coroas/RS. Lanches caprichados, porções generosas, atendimento próximo, delivery e retirada.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
